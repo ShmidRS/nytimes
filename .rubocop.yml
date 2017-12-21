@@ -1,0 +1,49 @@
+AllCops:
+  DisplayCopNames: true
+  Include:
+    - '**/Gemfile'
+    - Rakefile
+    - config.ru
+    - lib/**/*.rake
+  Exclude:
+    - db/schema.rb
+    - bin/*
+    - config/puma.rb
+    - config/environments/*
+    - spec/spec_helper.rb
+    - config/initializers/backtrace_silencers.rb
+    - config/initializers/devise.rb:9
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+# Disables "Use nested module/class definitions instead of compact style" warning
+ClassAndModuleChildren:
+  Enabled: false
+
+# Disables "Missing top-level class documentation comment" warning
+Documentation:
+  Enabled: false
+
+Metrics/ModuleLength:
+  Exclude:
+    - "**/*_spec.rb"
+    - "**/docs/**/*"
+
+Metrics/BlockLength:
+  Exclude:
+    - "**/*_spec.rb"
+    - "**/docs/**/*"
+    - "**/initializers/*"
+    - "**/views/**/*"
+# Increases "Line Length"
+Metrics/LineLength:
+  Max: 100
+  Exclude:
+    - "config/initializers/*"
+    - "spec/**/*"
+
+Style/SymbolArray:
+  Exclude:
+    - '**/Gemfile'
+    - '**/routes.rb'
