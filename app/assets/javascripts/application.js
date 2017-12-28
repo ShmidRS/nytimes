@@ -16,3 +16,22 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require_tree .
+
+var nytimesApp = angular.module('nytimesApp', [])
+
+nytimesApp.controller('SearchController', ['$scope', '$http', function($scope, $http) {
+    $scope.count = 1;
+    $scope.nytimesForm = {}
+    $scope.nytimesForm.search_results = 0
+    $scope.getResult = function() {
+        $http({
+            method: 'GET',
+            url: 'http://developer.nytimes.com/proxy/https/api.nytimes.com/svc/search/v2/articlesearch.json?api-key=5ab701a8afca46d8a9ec1ad163a1482e'
+        }).then(function successCallback(response) {
+            $scope.nytimesForm.search_results = response.data
+        }, function errorCallback(response) {
+
+        });
+        $scope.count++;
+    };
+}]);

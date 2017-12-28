@@ -1,15 +1,25 @@
-.form-group
-  %label.control-label Search input
-  %input.form-control{ type: :text, 'ng-model': 'nytimes_form.seach_input' }
+%div{ 'ng-controller': :SearchController }
 
-.form-group
-  %label.control-label Your email
-  %input.form-control{ type: :text, 'ng-model': 'nytimes_form.user_email' }
+  .form-group
+    %label.control-label Search input
+    %input.form-control{ type: :text, 'ng-model': 'nytimesForm.seach_input' }
 
-%input.btn.btn-default{ type: :button, value: 'Make request' }
+  .form-group
+    %label.control-label Your email
+    %input.form-control{ type: :text, 'ng-model': 'nytimesForm.user_email' }
 
-%br
-%br
+  %input.btn.btn-default{ type: :button, value: 'Make request', 'ng-click': 'getResult()' }
 
-%label Output
-%br
+  %br
+  %br
+
+  %label Output
+  %br
+
+  {{ count }}
+
+  {{ nytimesForm.seach_input }}
+
+  %br
+
+  {{ nytimesForm.search_results }}
