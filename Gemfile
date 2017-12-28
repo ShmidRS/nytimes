@@ -1,13 +1,14 @@
 source 'https://rubygems.org'
 ruby '2.4.1'
 
-gem 'bootstrap-sass', '~> 3.3.7'
+gem 'bootstrap'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.4'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.18'
 gem 'figaro'
 # Use Puma as the app server
+gem 'haml'
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'

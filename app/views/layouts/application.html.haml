@@ -1,0 +1,15 @@
+%html
+  %head
+    %title Lunch Ordering Saas
+    = csrf_meta_tags
+
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+
+  %body
+
+    %br
+    .container
+      .row
+        .col-lg-12
+          = yield
