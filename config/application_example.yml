@@ -1,0 +1,18 @@
+development:
+  lunch_ordering_saas_database_name: ''
+  lunch_ordering_saas_database_host: ''
+  lunch_ordering_saas_database_username: ''
+  lunch_ordering_saas_database_password: ''
+  lunch_ordering_saas_host: 'localhost:3000'
+
+staging:
+  lunch_ordering_saas_database_host: ''
+  lunch_ordering_saas_database_name: ''
+  lunch_ordering_saas_database_username: ''
+  lunch_ordering_saas_database_password: ''
+
+production:
+  lunch_ordering_saas_database_host: ''
+  lunch_ordering_saas_database_name: ''
+  lunch_ordering_saas_database_username: ''
+  lunch_ordering_saas_database_password: ''
