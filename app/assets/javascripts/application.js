@@ -24,11 +24,20 @@ nytimesApp.controller('SearchController', ['$scope', '$http', function($scope, $
     $scope.nytimesForm = {}
     $scope.nytimesForm.search_results = 0
     $scope.getResult = function() {
+        query = $scope.nytimesForm.seach_input
+
+        url = 'http://developer.nytimes.com/proxy/https/api.nytimes.com/svc/search/v2/articlesearch.json?api-key=5ab701a8afca46d8a9ec1ad163a1482e'
+
+        if (query) {
+            url += '&q=' + query
+        }
+
         $http({
             method: 'GET',
-            url: 'http://developer.nytimes.com/proxy/https/api.nytimes.com/svc/search/v2/articlesearch.json?api-key=5ab701a8afca46d8a9ec1ad163a1482e'
+            url: url
         }).then(function successCallback(response) {
-            $scope.nytimesForm.search_results = response.data
+            debugger
+            $scope.nytimesForm.search_results = response.data.response.docs
         }, function errorCallback(response) {
 
         });

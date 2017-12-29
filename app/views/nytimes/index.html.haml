@@ -2,13 +2,13 @@
 
   .form-group
     %label.control-label Search input
-    %input.form-control{ type: :text, 'ng-model': 'nytimesForm.seach_input' }
+    %input.form-control{ type: :text, 'ng-change': 'getResult()', 'ng-model': 'nytimesForm.seach_input' }
 
   .form-group
     %label.control-label Your email
     %input.form-control{ type: :text, 'ng-model': 'nytimesForm.user_email' }
 
-  %input.btn.btn-default{ type: :button, value: 'Make request', 'ng-click': 'getResult()' }
+  %input.btn.btn-default{ type: :button, value: 'Make request', 'ng-click': '' }
 
   %br
   %br
@@ -16,10 +16,29 @@
   %label Output
   %br
 
+  %img{ href: 'https://static01.nyt.com/images/2017/11/28/t-magazine/27tmag-gift/27tmag-gift-articleLarge.jpg', style: 'height: 338; width: 300' }
+
+
   {{ count }}
 
-  {{ nytimesForm.seach_input }}
 
   %br
 
-  {{ nytimesForm.search_results }}
+  %ol
+    %li{ 'ng-repeat': '(key, value) in nytimesForm.search_results' }
+      %label {{ value.web_url }}
+      %label {{ value.snippet }}
+      %img{ href: 'https://static01.nyt.com/{{ value.multimedia[0].url }}', style: 'height: {{ value.multimedia[0].height }}; width: {{ value.multimedia[0].width }}' }
+      %label {{ value.web_url }}
+
+
+  %li.story
+    %div
+      %a{ href: 'https://www.nytimes.com/2017/12/11/us/politics/campaign-memoir-trump-lewandowski-bossie.html'}
+        %img{ src:'https://static01.nyt.com/images/2017/12/12/us/politics/12dc-book/12dc-book-windowsTile336H.jpg', width: 75 }
+    %div
+      %h3
+        %a{ href: 'https://www.nytimes.com/2017/12/11/us/politics/campaign-memoir-trump-lewandowski-bossie.html' } A Campaign Memoir That Shows Trump, at Least Partly, as He Is
+      %p For the first time, some former Trump aides put their name to describing the president’s habits.
+      %div
+        %span December 12, 2017 - By MAGGIE HABERMAN - U.S. - Print Headline: "Showing Trump, at Least Partly, as He Is"
