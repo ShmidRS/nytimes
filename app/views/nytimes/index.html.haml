@@ -8,7 +8,7 @@
     %label.control-label Your email
     %input.form-control{ type: :text, 'ng-model': 'nytimesForm.user_email' }
 
-  %input.btn.btn-default{ type: :button, value: 'Make request', 'ng-click': '' }
+  %input.btn.btn-default{ type: :button, value: 'Make request', 'ng-click': 'sendMeEmail()' }
 
   %br
   %br
@@ -22,6 +22,8 @@
 
   %ol
     %li{ 'ng-repeat': '(key, value) in nytimesForm.search_results' }
-      %a{ href: '{{ value.web_url }}' } {{ value.headline.main }}
-      %label {{ value.snippet }}
+      %a{ href: '{{ value.web_url }}' }
+        %h2 {{ value.headline.main }}
+      %h5 {{ value.snippet }}
       %img{ src: 'https://static01.nyt.com/{{ value.multimedia[0].url }}', style: 'height: {{ value.multimedia[0].height }}; width: {{ value.multimedia[0].width }}' }
+    %br
