@@ -19,28 +19,58 @@
 
 var nytimesApp = angular.module('nytimesApp', [])
 
-nytimesApp.controller('SearchController', ['$scope', '$http', function($scope, $http) {
+nytimesApp.controller('SearchController', ['$scope', '$http', '$timeout', function($scope, $http, $timeout) {
     $scope.count = 1;
-    $scope.nytimesForm = {}
-    $scope.nytimesForm.search_results = 0
+    $scope.spinnerHidden = true;
+    $scope.nytimesForm = {};
+    $scope.nytimesForm.search_results = 0;
     $scope.getResult = function() {
-        query = $scope.nytimesForm.seach_input
-
+        $scope.spinnerHidden = false;
+        query = $scope.nytimesForm.seach_input;
         url = 'http://developer.nytimes.com/proxy/https/api.nytimes.com/svc/search/v2/articlesearch.json?api-key=5ab701a8afca46d8a9ec1ad163a1482e'
 
         if (query) {
             url += '&q=' + query
         }
 
-        $http({
-            method: 'GET',
-            url: url
-        }).then(function successCallback(response) {
-            debugger
-            $scope.nytimesForm.search_results = response.data.response.docs
-        }, function errorCallback(response) {
-
-        });
-        $scope.count++;
+        $timeout(function() {
+            $http({
+                method: 'GET',
+                url: url
+            }).then(function successCallback(response) {
+                debugger;
+                $scope.nytimesForm.search_results = response.data.response.docs;
+                $scope.spinnerHidden = true;
+            }, function errorCallback(response) {
+                $scope.spinnerHidden = true;
+            });
+        }, 2000);
     };
+
+    $scope.sendMeEmail = function() {
+        query = $scope.nytimesForm.seach_input;
+        url = 'http://developer.nytimes.com/proxy/https/api.nytimes.com/svc/search/v2/articlesearch.json?api-key=5ab701a8afca46d8a9ec1ad163a1482e'
+
+        if (query) {
+            url += '&q=' + query
+        }
+
+        $timeout(function() {
+            $http({
+                method: 'POST',
+                url: 'http://localhost:3000'
+            }).then(function successCallback(response) {
+                debugger;
+                $scope.nytimesForm.search_results = response.data.response.docs;
+                $scope.spinnerHidden = true;
+            }, function errorCallback(response) {
+                $scope.spinnerHidden = true;
+            });
+        }, 2000);
+    };
+
+    $('#search_input').keydown(function () { $scope.spinnerHidden = false; });
+    $('#search_input').keyup($.debounce(1000, false, $scope.getResult ));
+
+    // $('#search_input').keyup($.debounce(1000, false, function() { console.log('qwe') }));
 }]);
