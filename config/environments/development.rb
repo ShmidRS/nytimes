@@ -26,6 +26,34 @@ Rails.application.configure do
     config.cache_store = :null_store
   end
 
+  # config.active_record.migration_error = :page_load
+  # config.action_mailer.perform_deliveries = true
+  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  # # SMTP settings for gmail
+  # config.action_mailer.smtp_settings = {
+  #     :address              => "smtp.gmail.com",
+  #     :port                 => 587,
+  #     :domain               => 'localhost',
+  #     :user_name            => 'contact.opus.ua@gmail.com',
+  #     :password             => 'SAm4U5xmAeXZ',
+  #     :authentication       => "plain",
+  #     :enable_starttls_auto => true
+  # }
+
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+      address:              'smtp.mail.ru',
+      port:                 993,
+      user_name:            'fsfsegfdsdfds@mail.ru',
+      domain:               'localhost',
+      password:             'qweqwe123',
+      authentication:       'plain',
+      enable_starttls_auto: true
+  }
+
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
 

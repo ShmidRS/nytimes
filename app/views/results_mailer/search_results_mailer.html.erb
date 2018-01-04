@@ -1,0 +1,22 @@
+
+<ol>
+<% search_results.each do |result| %>
+  <li>
+    <a href="<%= result[:web_url] %>">
+      <h2><%= result[:headline][:main].to_sym %></h2>
+    </a>
+    <h5><%= result[:snippet] %></h5>
+    <img src="https://static01.nyt.com/<%= result[:multimedia][0][:url] %>" />
+    <br>
+  </li>
+<% end %>
+</ol>
+
+<!-- - search_results.each do |result|-->
+  <!--%li-->
+    <!--%a{ href: result[:web_url] }-->
+      <!-- - binding.pry-->
+      <!--%h2{ result[:headline][:main].to_sym }-->
+    <!--%h5{ result[:snippet] }-->
+    <!--%img{ src: "https://static01.nyt.com/#{result[:multimedia][0][:url]}" }-->
+  <!--%br-->

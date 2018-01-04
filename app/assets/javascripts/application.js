@@ -37,6 +37,7 @@ nytimesApp.controller('SearchController', ['$scope', '$http', '$timeout', functi
             method: 'GET',
             url: url
         }).then(function successCallback(response) {
+            debugger;
             $scope.nytimesForm.search_results = response.data.response.docs;
             $scope.spinnerHidden = true;
         }, function errorCallback(response) {
